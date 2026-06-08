@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugandh Kumar, Ph.D. | Computational Biologist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0f1f3d;
+  --steel:  #1e3a6e;
+  --accent: #2d7dd2;
+  --teal:   #0a9396;
+  --gold:   #e9c46a;
+  --light:  #f8f9fc;
+  --mid:    #e2e8f4;
+  --text:   #1a202c;
+  --muted:  #556080;
+  --white:  #ffffff;
+  --card-bg:#ffffff;
+  --border: rgba(30,58,110,0.10);
+  --serif:  'DM Serif Display', Georgia, serif;
+  --sans:   'DM Sans', system-ui, sans-serif;
+  --mono:   'JetBrains Mono', monospace;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(15,31,61,0.10);
+  --shadow-lg: 0 12px 48px rgba(15,31,61,0.15);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:var(--sans);
+  background:var(--light);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+/* ── NAVIGATION ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(15,31,61,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.nav-brand{
+  font-family:var(--serif);
+  font-size:1.1rem;color:var(--white);
+  letter-spacing:0.02em;
+}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  color:rgba(255,255,255,0.75);
+  text-decoration:none;font-size:0.88rem;
+  font-weight:500;letter-spacing:0.04em;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--gold);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 60%,#1a4a8a 100%);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:120px 8% 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-text{position:relative;z-index:1;}
+.hero-badge{
+  display:inline-block;
+  background:rgba(233,196,106,0.15);
+  border:1px solid rgba(233,196,106,0.4);
+  color:var(--gold);
+  font-size:0.78rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:6px 16px;border-radius:100px;
+  margin-bottom:1.2rem;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,4.5vw,3.8rem);
+  color:var(--white);line-height:1.15;
+  margin-bottom:0.5rem;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-title{
+  font-size:1.05rem;color:rgba(255,255,255,0.65);
+  font-weight:400;margin-bottom:1.5rem;
+  letter-spacing:0.01em;
+}
+.hero-stats{
+  display:flex;gap:2rem;margin-bottom:2rem;
+  flex-wrap:wrap;
+}
+.hero-stat{text-align:left;}
+.hero-stat .num{
+  font-family:var(--serif);font-size:2rem;
+  color:var(--gold);font-weight:400;display:block;
+}
+.hero-stat .lbl{
+  font-size:0.78rem;color:rgba(255,255,255,0.55);
+  text-transform:uppercase;letter-spacing:0.08em;
+}
+.hero-links{display:flex;gap:0.8rem;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:8px;
+  font-size:0.88rem;font-weight:600;
+  text-decoration:none;transition:all .2s;
+  letter-spacing:0.02em;
+}
+.btn-primary{
+  background:var(--gold);color:var(--navy);
+}
+.btn-primary:hover{background:#f0d080;transform:translateY(-1px);}
+.btn-outline{
+  border:1.5px solid rgba(255,255,255,0.3);
+  color:rgba(255,255,255,0.85);
+}
+.btn-outline:hover{
+  border-color:rgba(255,255,255,0.7);
+  background:rgba(255,255,255,0.08);
+}
+
+.hero-image{
+  display:flex;justify-content:center;align-items:center;
+  position:relative;z-index:1;
+}
+.photo-frame{
+  width:320px;height:320px;border-radius:50%;
+  border:4px solid rgba(233,196,106,0.5);
+  box-shadow:0 0 0 12px rgba(233,196,106,0.08),var(--shadow-lg);
+  overflow:hidden;position:relative;
+}
+.photo-frame img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(20%) contrast(1.05);
+}
+.floating-chip{
+  position:absolute;
+  background:rgba(255,255,255,0.95);
+  border-radius:10px;padding:10px 16px;
+  font-size:0.82rem;font-weight:600;color:var(--navy);
+  box-shadow:var(--shadow);
+  white-space:nowrap;
+}
+.chip-1{top:-20px;right:-30px;}
+.chip-2{bottom:30px;left:-50px;}
+.chip-3{top:60%;right:-50px;}
+
+/* ── SECTIONS ── */
+section{padding:80px 8%;}
+.section-label{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--teal);
+  margin-bottom:0.6rem;
+}
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  color:var(--navy);line-height:1.2;margin-bottom:3rem;
+}
+.section-title span{color:var(--accent);}
+
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;
+}
+.about-text p{
+  color:var(--muted);margin-bottom:1.2rem;font-size:1.02rem;
+}
+.about-text p strong{color:var(--navy);}
+.info-list{list-style:none;margin-top:1.5rem;}
+.info-list li{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 0;border-bottom:1px solid var(--border);
+  font-size:0.95rem;
+}
+.info-list li:last-child{border:none;}
+.info-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(45,125,210,0.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.info-list a{color:var(--accent);text-decoration:none;}
+.info-list a:hover{text-decoration:underline;}
+
+.metrics-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+}
+.metric-card{
+  background:var(--navy);border-radius:var(--radius);
+  padding:1.5rem;text-align:center;
+}
+.metric-card .value{
+  font-family:var(--serif);font-size:2.2rem;
+  color:var(--gold);display:block;margin-bottom:4px;
+}
+.metric-card .label{
+  font-size:0.82rem;color:rgba(255,255,255,0.6);
+  text-transform:uppercase;letter-spacing:0.08em;
+}
+.orcid-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(166,206,57,0.1);border:1px solid rgba(166,206,57,0.3);
+  color:#6a9e1f;border-radius:8px;
+  padding:10px 16px;font-size:0.88rem;
+  font-weight:600;text-decoration:none;margin-top:1.5rem;
+}
+
+/* ── SKILLS ── */
+.skills-bg{background:var(--navy);color:var(--white);}
+.skills-bg .section-title{color:var(--white);}
+.skills-bg .section-label{color:var(--gold);}
+.skills-tabs{
+  display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;
+}
+.tab-btn{
+  padding:8px 20px;border-radius:100px;
+  border:1.5px solid rgba(255,255,255,0.2);
+  background:transparent;color:rgba(255,255,255,0.65);
+  font-family:var(--sans);font-size:0.88rem;font-weight:500;
+  cursor:pointer;transition:all .2s;
+}
+.tab-btn.active{
+  background:var(--gold);color:var(--navy);
+  border-color:var(--gold);font-weight:700;
+}
+.tab-btn:hover:not(.active){
+  border-color:rgba(255,255,255,0.5);
+  color:var(--white);
+}
+.skills-panel{display:none;}
+.skills-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem;}
+.skill-chip{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;padding:10px 16px;
+  font-size:0.88rem;color:rgba(255,255,255,0.85);
+  font-family:var(--mono);
+  transition:all .2s;
+}
+.skill-chip:hover{
+  background:rgba(233,196,106,0.15);
+  border-color:rgba(233,196,106,0.4);
+  color:var(--gold);
+}
+
+/* ── EXPERIENCE ── */
+.timeline{position:relative;}
+.timeline::before{
+  content:'';position:absolute;left:28px;top:8px;bottom:8px;
+  width:2px;background:linear-gradient(to bottom,var(--accent),var(--teal));
+  border-radius:2px;
+}
+.tl-item{
+  display:grid;grid-template-columns:56px 1fr;
+  gap:1.5rem;margin-bottom:2.5rem;position:relative;
+}
+.tl-dot{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--white);border:3px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;box-shadow:var(--shadow);
+  position:relative;z-index:1;
+}
+.tl-card{
+  background:var(--card-bg);border-radius:var(--radius);
+  padding:1.8rem;box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.tl-period{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:4px;
+}
+.tl-role{
+  font-family:var(--serif);font-size:1.25rem;
+  color:var(--navy);margin-bottom:2px;
+}
+.tl-org{font-size:0.92rem;color:var(--accent);margin-bottom:1rem;}
+.tl-bullets{list-style:none;}
+.tl-bullets li{
+  padding:6px 0 6px 22px;position:relative;
+  font-size:0.92rem;color:var(--muted);
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.tl-bullets li:last-child{border:none;}
+.tl-bullets li::before{
+  content:'▶';position:absolute;left:0;
+  font-size:0.55rem;color:var(--accent);top:10px;
+}
+.tl-bullets strong{color:var(--navy);}
+
+/* ── PUBLICATIONS ── */
+.pubs-filter{
+  display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;
+}
+.pub-card{
+  background:var(--card-bg);border-radius:var(--radius);
+  padding:1.4rem 1.8rem;margin-bottom:1rem;
+  border:1px solid var(--border);border-left:4px solid var(--accent);
+  box-shadow:var(--shadow);transition:all .25s;
+}
+.pub-card:hover{transform:translateX(4px);box-shadow:var(--shadow-lg);}
+.pub-card.first-author{border-left-color:var(--gold);}
+.pub-card.under-review{border-left-color:var(--teal);}
+.pub-badge{
+  display:inline-block;font-size:0.72rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:3px 10px;border-radius:4px;margin-bottom:0.6rem;
+}
+.badge-first{background:rgba(233,196,106,0.15);color:#a07800;}
+.badge-review{background:rgba(10,147,150,0.12);color:var(--teal);}
+.badge-accepted{background:rgba(45,125,210,0.12);color:var(--accent);}
+.badge-published{background:rgba(100,100,120,0.10);color:#555577;}
+.pub-title{
+  font-weight:600;color:var(--navy);
+  font-size:0.97rem;margin-bottom:0.3rem;line-height:1.45;
+}
+.pub-authors{font-size:0.86rem;color:var(--muted);margin-bottom:0.3rem;}
+.pub-authors strong{color:var(--navy);}
+.pub-journal{
+  font-size:0.84rem;color:var(--accent);
+  font-style:italic;font-weight:500;
+}
+
+/* ── AWARDS ── */
+.awards-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.2rem;
+}
+.award-card{
+  background:var(--card-bg);border-radius:var(--radius);
+  padding:1.4rem;border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  display:flex;align-items:flex-start;gap:1rem;
+  transition:all .2s;
+}
+.award-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.award-icon{font-size:1.8rem;flex-shrink:0;}
+.award-title{font-weight:600;color:var(--navy);font-size:0.95rem;}
+.award-year{font-size:0.82rem;color:var(--muted);margin-top:2px;}
+
+/* ── CONTACT ── */
+.contact-section{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--steel) 100%);
+  color:var(--white);text-align:center;
+}
+.contact-section .section-title{color:var(--white);}
+.contact-section .section-label{color:var(--gold);}
+.contact-grid{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;
+  margin-top:2rem;
+}
+.contact-item{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:10px;padding:14px 22px;
+  color:rgba(255,255,255,0.85);text-decoration:none;
+  font-size:0.92rem;font-weight:500;
+  transition:all .2s;
+}
+.contact-item:hover{
+  background:rgba(255,255,255,0.15);
+  transform:translateY(-2px);
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);
+  color:rgba(255,255,255,0.4);
+  text-align:center;padding:2rem;font-size:0.85rem;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:100px 6% 60px;}
+  .hero-image{display:none;}
+  .about-grid{grid-template-columns:1fr;}
+  .skills-panel.active{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  nav .nav-links{display:none;}
+  .metrics-grid{grid-template-columns:1fr;}
+  .skills-panel.active{grid-template-columns:1fr;}
+}
+
+.btn-cv{
+  background:rgba(233,196,106,0.15);
+  border:1.5px solid var(--gold);
+  color:var(--gold);
+  font-weight:700;
+  animation:pulse-cv 2.5s ease-in-out infinite;
+}
+.btn-cv:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px);}
+@keyframes pulse-cv{
+  0%,100%{box-shadow:0 0 0 0 rgba(233,196,106,0.4);}
+  50%{box-shadow:0 0 0 8px rgba(233,196,106,0);}
+}
+
+/* Scroll animations */
+.fade-up{opacity:0;transform:translateY(24px);transition:all .6s ease;}
+.fade-up.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <span class="nav-brand">Sugandh Kumar</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="SugandhKumar_CV_2026.pdf" download="SugandhKumar_CV_2026.pdf" style="color:var(--gold);font-weight:700;">📄 CV</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">🧬 Computational Biologist · UCSF</div>
+    <h1>Sugandh Kumar<br><em>Ph.D.</em></h1>
+    <p class="hero-title">Postdoctoral Research Fellow, University of California San Francisco<br>Single-Cell Genomics · Spatial Transcriptomics · AI/ML · Precision Medicine</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">30+</span><span class="lbl">Publications</span></div>
+      <div class="hero-stat"><span class="num">14</span><span class="lbl">h-index</span></div>
+      <div class="hero-stat"><span class="num">550+</span><span class="lbl">Citations</span></div>
+      <div class="hero-stat"><span class="num">10+</span><span class="lbl">Years Research</span></div>
+    </div>
+    <div class="hero-links">
+      <a href="https://scholar.google.com/citations?user=DIuTOTMAAAAJ&hl=en" class="btn btn-primary" target="_blank">📖 Google Scholar</a>
+      <a href="https://github.com/skbioinfo" class="btn btn-outline" target="_blank">⌨️ GitHub</a>
+      <a href="https://www.linkedin.com/in/sugandh-kumar-ph-d-5b7855144/" class="btn btn-outline" target="_blank">💼 LinkedIn</a>
+      <a href="https://orcid.org/0000-0001-7000-4718" class="btn btn-outline" target="_blank">🆔 ORCID</a>
+      <a href="SugandhKumar_CV_2026.pdf" download="SugandhKumar_CV_2026.pdf" class="btn btn-cv">📄 Download CV</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div style="position:relative;display:inline-block;">
+      <div class="photo-frame">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBwRXhpZgAATU0AKgAAAAgABAEGAAMAAAABAAIAAAESAAMAAAABAAEAAAEoAAMAAAABAAEAAIdpAAQAAAABAAAAPgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAACb6ADAAQAAAABAAADVAAAAAD/4QkgaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiLz4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+/9sAQwAHBQUGBQQHBgYGCAcHCAsSCwsKCgsWDxANEhoWGxoZFhkYHCAoIhweJh4YGSMwJCYqKy0uLRsiMjUxLDUoLC0s/8AACwgAyACSAQERAP/EABwAAAAHAQEAAAAAAAAAAAAAAAABAgMEBQcGCP/EAD4QAAIBAwMCAwUGBAQFBQAAAAECAwAEEQUSIQYxE0FRByJhcYEUMpGhscEVQtHhCCNSgiQzcvDxQ1NikrL/2gAIAQEAAD8A9AmipQPFAGkyS+GuTRQ3StkelM3eopaBR9+WQ4RB3P8Aam31eGEMGZWk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" alt="Sugandh Kumar">
+      
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--white);">
+  <div class="fade-up">
+    <div class="section-label">Who I Am</div>
+    <h2 class="section-title">About <span>Me</span></h2>
+  </div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I am a <strong>computational biologist and bioinformatics scientist</strong> with 10+ years of research experience, including five years of postdoctoral research at <strong> University of California, San Francisco (UCSF's) at Liao Lab</strong>, Department of Dermatology.</p>
+      <p>My research sits at the intersection of <strong>single-cell multi-omics, spatial transcriptomics, genome-wide association studies, and machine learning as well as Computational chemoinformatics and Drug designing </strong> applied to complex human inflammatory, cancers and autoimmune diseases — including Psoriasis, Atopic Dermatitis, Psoriatic Arthritis, Spondyloarthritis, RA, and Hidradenitis Suppurativa.</p>
+      <p>I develop scalable analytical pipelines, discover clinically actionable biomarkers, and translate high-dimensional omics data into mechanistic insights that inform precision medicine and therapeutic development.</p>
+      <p>I have collaborated with pharmaceutical partners including <strong>Amgen, Johnson &amp; Johnson (Janssen), LEO Pharma, and TrexBio</strong>, and contributed to multiple NIH-funded research programs.</p>
+      <ul class="info-list">
+        <li><span class="info-icon">📍</span>Bay Area, San Francisco, CA 94086</li>
+        <li><span class="info-icon">🏛️</span>UCSF — Department of Dermatology, Liao Lab</li>
+        <li><span class="info-icon">📧</span><a href="mailto:sugandh.kumar@ucsf.edu">sugandh.kumar@ucsf.edu</a></li>
+        <li><span class="info-icon">📧</span><a href="mailto:skjobs0123@gmail.com">skjobs0123@gmail.com</a></li>
+        <li><span class="info-icon">📞</span>+1-628-246-6846</li>
+        <li><span class="info-icon">🔬</span><a href="https://orcid.org/0000-0001-7000-4718" target="_blank">ORCID: 0000-0001-7000-4718</a></li>
+        <li><span class="info-icon">🌐</span><a href="https://github.com/skbioinfo" target="_blank">github.com/skbioinfo</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="metrics-grid">
+        <div class="metric-card"><span class="value">30+</span><span class="label">Peer-Reviewed Articles</span></div>
+        <div class="metric-card"><span class="value">14</span><span class="label">h-index</span></div>
+        <div class="metric-card"><span class="value">16</span><span class="label">i10-index</span></div>
+        <div class="metric-card"><span class="value">550+</span><span class="label">Total Citations</span></div>
+      </div>
+      <div style="margin-top:1.5rem;background:var(--mid);border-radius:var(--radius);padding:1.4rem;">
+        <div style="font-weight:700;color:var(--navy);margin-bottom:0.8rem;">🎓 Education</div>
+        <div style="margin-bottom:0.8rem;">
+          <div style="font-weight:600;color:var(--navy);font-size:0.95rem;">Ph.D., Computational Biology</div>
+          <div style="font-size:0.85rem;color:var(--muted);">Institute of Life Sciences, India · 2015–2020</div>
+          <div style="font-size:0.82rem;color:var(--teal);">UGC Junior &amp; Senior Research Fellowship</div>
+        </div>
+        <div style="margin-bottom:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border);">
+          <div style="font-weight:600;color:var(--navy);font-size:0.95rem;">M.Sc., Bioinformatics</div>
+          <div style="font-size:0.85rem;color:var(--muted);">Central University of South Bihar, India · 2011–2013</div>
+          <div style="font-size:0.82rem;color:var(--teal);">Merit Scholarship</div>
+        </div>
+        <div style="padding-top:0.8rem;border-top:1px solid var(--border);">
+          <div style="font-weight:600;color:var(--navy);font-size:0.95rem;">B.Sc., Biotechnology</div>
+          <div style="font-size:0.85rem;color:var(--muted);">Punjab Technical University, India · 2008–2011</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;background:var(--mid);border-radius:var(--radius);padding:1.2rem;">
+        <div style="font-weight:700;color:var(--navy);margin-bottom:0.6rem;">📝 Patent</div>
+        <div style="font-size:0.88rem;color:var(--muted);">Australian Innovation Patent No. 2021103325 — Method to Detect Paternal Contributors in Seminal Extracellular Vesicles for Recurrent Pregnancy Loss</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="fade-up">
+    <div class="section-label">Technical Expertise</div>
+    <h2 class="section-title">Skills &amp; <span style="color:var(--gold);">Tools</span></h2>
+  </div>
+  <div class="skills-tabs fade-up">
+    <button class="tab-btn active" onclick="showTab('sc')">Single-Cell &amp; Spatial</button>
+    <button class="tab-btn" onclick="showTab('gwas')">GWAS &amp; PRS</button>
+    <button class="tab-btn" onclick="showTab('ml')">ML &amp; AI</button>
+    <button class="tab-btn" onclick="showTab('bulk')">Bulk Genomics</button>
+    <button class="tab-btn" onclick="showTab('prog')">Programming</button>
+    <button class="tab-btn" onclick="showTab('chem')">Chemoinformatics</button>
+  </div>
+  <div id="tab-sc" class="skills-panel active fade-up">
+    <div class="skill-chip">scRNA-seq</div><div class="skill-chip">CITE-seq</div>
+    <div class="skill-chip">scATAC-seq</div><div class="skill-chip">Xenium In Situ</div>
+    <div class="skill-chip">Visium / ST</div><div class="skill-chip">Seurat v5</div>
+    <div class="skill-chip">Scanpy / scverse</div><div class="skill-chip">Squidpy</div>
+    <div class="skill-chip">Scran / Scater</div><div class="skill-chip">Cellranger</div>
+    <div class="skill-chip">Pseudotime</div><div class="skill-chip">RNA Velocity</div>
+    <div class="skill-chip">CellChat</div><div class="skill-chip">NicheNet</div>
+    <div class="skill-chip">GSEA</div><div class="skill-chip">Cell Annotation</div>
+    <div class="skill-chip">demuxlet</div><div class="skill-chip">scVI</div>
+    <div class="skill-chip">Harmony</div><div class="skill-chip">IPA / MetaCore</div>
+  </div>
+  <div id="tab-gwas" class="skills-panel">
+    <div class="skill-chip">Multi-ethnic GWAS</div><div class="skill-chip">PLINK2</div>
+    <div class="skill-chip">TOPMed Imputation</div><div class="skill-chip">Michigan Imputation</div>
+    <div class="skill-chip">bcftools</div><div class="skill-chip">vcftools</div>
+    <div class="skill-chip">GATK4</div><div class="skill-chip">ANNOVAR</div>
+    <div class="skill-chip">PRS Calculation</div><div class="skill-chip">Leave-One-Out PRS</div>
+    <div class="skill-chip">Axiom Arrays</div><div class="skill-chip">Fine-Mapping</div>
+    <div class="skill-chip">Colocalization</div><div class="skill-chip">eQTL Analysis</div>
+    <div class="skill-chip">Firth Regression</div><div class="skill-chip">snpEff</div>
+  </div>
+  <div id="tab-ml" class="skills-panel">
+    <div class="skill-chip">Random Forest</div><div class="skill-chip">XGBoost</div>
+    <div class="skill-chip">CNN</div><div class="skill-chip">PyTorch</div>
+    <div class="skill-chip">TensorFlow</div><div class="skill-chip">scikit-learn</div>
+    <div class="skill-chip">Feature Selection</div><div class="skill-chip">Ensemble Models</div>
+    <div class="skill-chip">Biomarker Discovery</div><div class="skill-chip">SHAP Analysis</div>
+    <div class="skill-chip">Claude Code</div><div class="skill-chip">GitHub Copilot</div>
+    <div class="skill-chip">Deep Learning</div><div class="skill-chip">Computer Vision</div>
+    <div class="skill-chip">Generative AI</div><div class="skill-chip">LLM Integration</div>
+  </div>
+  <div id="tab-bulk" class="skills-panel">
+    <div class="skill-chip">Bulk RNA-seq</div><div class="skill-chip">STAR / HISAT2</div>
+    <div class="skill-chip">DESeq2</div><div class="skill-chip">edgeR</div>
+    <div class="skill-chip">ChIP-seq (MACS2)</div><div class="skill-chip">ATAC-seq</div>
+    <div class="skill-chip">WGS / WES</div><div class="skill-chip">Methylation Analysis</div>
+    <div class="skill-chip">WGCNA</div><div class="skill-chip">Kallisto</div>
+    <div class="skill-chip">featureCounts</div><div class="skill-chip">BEDtools</div>
+    <div class="skill-chip">Manta / LUMPY</div><div class="skill-chip">Picard</div>
+  </div>
+  <div id="tab-prog" class="skills-panel">
+    <div class="skill-chip">Python</div><div class="skill-chip">R</div>
+    <div class="skill-chip">Bash</div><div class="skill-chip">Perl</div>
+    <div class="skill-chip">JavaScript</div><div class="skill-chip">HTML / CSS</div>
+    <div class="skill-chip">Git / GitHub</div><div class="skill-chip">Docker</div>
+    <div class="skill-chip">Snakemake</div><div class="skill-chip">Singularity</div>
+    <div class="skill-chip">AWS</div><div class="skill-chip">HPC / SLURM</div>
+    <div class="skill-chip">Linux</div><div class="skill-chip">CodeOcean</div>
+  </div>
+  <div id="tab-chem" class="skills-panel">
+    <div class="skill-chip">Molecular Docking</div><div class="skill-chip">Glide / VINA</div>
+    <div class="skill-chip">MD Simulations</div><div class="skill-chip">GROMACS</div>
+    <div class="skill-chip">NAMD / AMBER</div><div class="skill-chip">QSAR / ADMET</div>
+    <div class="skill-chip">Schrodinger Suite</div><div class="skill-chip">ROSETTA</div>
+    <div class="skill-chip">PyMol / VMD</div><div class="skill-chip">I-TASSER</div>
+    <div class="skill-chip">Virtual Screening</div><div class="skill-chip">Homology Modeling</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--light);">
+  <div class="fade-up">
+    <div class="section-label">Career History</div>
+    <h2 class="section-title">Work <span>Experience</span></h2>
+  </div>
+  <div class="timeline fade-up">
+
+    <div class="tl-item">
+      <div class="tl-dot">🏛️</div>
+      <div class="tl-card">
+        <div class="tl-period">June 2021 – Present</div>
+        <div class="tl-role">Postdoctoral Research Fellow</div>
+        <div class="tl-org">University of California, San Francisco (UCSF) — Department of Dermatology, Liao Lab</div>
+        <ul class="tl-bullets">
+          <li><strong>Single-Cell Multi-Omics:</strong> Designed end-to-end pipelines for scRNA-seq, CITE-seq (198 surface proteins), scATAC-seq, and Xenium Spatial Transcriptomics across >200 samples in Psoriasis, Atopic Dermatitis, PsA, and Hidradenitis Suppurativa.</li>
+          <li><strong>Spatial Biology:</strong> Led Xenium In Situ studies with 5,100-gene panel (4 samples/slide); identified MPZ+S100B+ Schwann cells as novel neuroimmune hubs in AD skin — under review at JACI 2025.</li>
+          <li><strong>GWAS &amp; PRS:</strong> Completed multi-ethnic GWAS (&gt;20,000 samples); built validated polygenic risk score engines with Leave-One-Out sensitivity analysis.</li>
+          <li><strong>ML &amp; Pharmacogenomics:</strong> Applied Random Forest, XGBoost, CNN to Janssen Phase III clinical trial data to predict biologic treatment response; CITE-seq ML classifier ~87% accuracy (Nature Comm, 2025).</li>
+          <li><strong>AI Engineering:</strong> Directed development of computer vision web tool for automated real-time PASI score tracking from sequential patient images.</li>
+          <li><strong>Collaboration:</strong> Contributed preliminary data to NIH R01 grants; partnered with Amgen, J&amp;J, LEO Pharma, and TrexBio; mentored 5+ undergraduate and MD fellows.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot">🧪</div>
+      <div class="tl-card">
+        <div class="tl-period">2015 – 2021</div>
+        <div class="tl-role">Research Associate</div>
+        <div class="tl-org">Institute of Life Sciences, Bhubaneswar, India</div>
+        <ul class="tl-bullets">
+          <li><strong>Cancer Biomarkers:</strong> Developed ML-based diagnostic models for HNSCC using microRNA expression profiling (PeerJ, 2020; Frontiers in Oncology, 2022).</li>
+          <li><strong>Multi-Omics:</strong> Bulk RNA-seq, ChIP-seq, GATK variant calling, methylation, and metagenomic analyses for oral cancer biology.</li>
+          <li><strong>Drug Discovery:</strong> Built automated virtual screening pipeline against human kinome; executed molecular docking, MD simulations (GROMACS, NAMD), and QSAR modeling.</li>
+          <li><strong>Database Development:</strong> Created comprehensive HNSCC database integrating 4,000+ protein structures, compound libraries, and mutational impact data.</li>
+          <li><strong>Mentorship:</strong> Supervised M.Sc. and pre-Ph.D. fellows in computational biology and drug design workflows.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot">💻</div>
+      <div class="tl-card">
+        <div class="tl-period">2014 – 2015</div>
+        <div class="tl-role">Software Trainee (Internship)</div>
+        <div class="tl-org">Apt Software Pvt. Ltd., Kolkata, India</div>
+        <ul class="tl-bullets">
+          <li>Developed QSAR models for HIV drug activity prediction using Python and R.</li>
+          <li>Contributed to software testing, cheminformatics scripting, and data pipeline development.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" style="background:var(--white);">
+  <div class="fade-up">
+    <div class="section-label">Scholarly Work</div>
+    <h2 class="section-title">Publications <span>&amp; Research</span></h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;">30+ peer-reviewed articles · h-index 14 · i10-index 16 · 550+ citations · 1 patent · 100+ peer reviews</p>
+    <div class="pubs-filter" style="margin-bottom:2rem;">
+      <span style="font-size:0.88rem;color:var(--muted);align-self:center;margin-right:0.5rem;">Legend:</span>
+      <span class="pub-badge badge-first">⭐ First / Co-First Author</span>
+      <span class="pub-badge badge-review">🔄 Under Review</span>
+      <span class="pub-badge badge-accepted">✅ Accepted</span>
+      <span class="pub-badge badge-published">📄 Published</span>
+    </div>
+  </div>
+
+  <div class="fade-up">
+  <!-- Under review / accepted -->
+  <div class="pub-card first-author under-review">
+    <div><span class="pub-badge badge-review">🔄 Under Review</span> <span class="pub-badge badge-first">⭐ 1st Author / Co-corresponding</span></div>
+    <div class="pub-title">Dupilumab Reprograms Cutaneous Immune, Neuronal, and Stromal Cells in Atopic Dermatitis</div>
+    <div class="pub-authors"><strong>Sugandh Kumar</strong> et al.</div>
+    <div class="pub-journal">JACI — Journal of Allergy and Clinical Immunology · 2025</div>
+  </div>
+
+  <div class="pub-card first-author under-review">
+    <div><span class="pub-badge badge-review">🔄 Under Review</span> <span class="pub-badge badge-first">⭐ 1st Author / Co-corresponding</span></div>
+    <div class="pub-title">Cellular Indexing of Transcriptomes and Epitopes (CITE-Seq) in Hidradenitis Suppurativa Identifies Dysregulated Cell Types and Facilitates ML-Based Diagnosis</div>
+    <div class="pub-authors"><strong>Sugandh Kumar</strong> et al.</div>
+    <div class="pub-journal">Nature Communications · 2025</div>
+  </div>
+
+  <div class="pub-card first-author">
+    <div><span class="pub-badge badge-accepted">✅ Accepted</span> <span class="pub-badge badge-first">⭐ Co-First Author</span></div>
+    <div class="pub-title">Genetic Analysis of Pediatric Psoriasis</div>
+    <div class="pub-authors">Jacqueline M. Frost*, <strong>Sugandh Kumar*</strong> et al., Anne M. Bowcock</div>
+    <div class="pub-journal">Journal of Investigative Dermatology (JID) · 2026</div>
+  </div>
+
+  <!-- Published -->
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">A Partitioned Polygenic Risk Score Reveals Distinct Contributions to Psoriasis Clinical Phenotypes Across a Multi-Racial Cohort</div>
+    <div class="pub-authors">Faye Orcales, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Journal of Translational Medicine · 2024</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">A20 (Tnfaip3) in Keratinocytes Restricts an Early Antiviral Gene Program Associated with Psoriatic Skin and Joint Disease</div>
+    <div class="pub-authors">Bahram Razani, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Journal of Investigative Dermatology · 2024</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-accepted">✅ Accepted</span>
+    <div class="pub-title">Immunological Differences in Atopic Dermatitis Across Age Groups: Insights from Single-Cell Multi-Omics</div>
+    <div class="pub-authors">Gian Carlo, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Journal of Translational Medicine · 2026</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">Patients with Psoriasis and Suppurative Hidradenitis (PSOSH) Share Genetic Risk Factors and Are at Risk of Increased Morbidity</div>
+    <div class="pub-authors">Antonia Wiala, Kareem G. Elhage, <strong>Sugandh Kumar</strong> et al.</div>
+    <div class="pub-journal">JAAD — Journal of the American Academy of Dermatology · 2025</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">Combining Single-Cell Transcriptome and Surface Epitope Profiling with Machine Learning to Diagnose Psoriatic Arthritis</div>
+    <div class="pub-authors">Jared Liu, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Frontiers in Immunology · 2022</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">Single-Cell Transcriptome and Surface Epitope Analysis of Ankylosing Spondylitis Facilitates Disease Classification by Machine Learning</div>
+    <div class="pub-authors">Samuel Alber, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Frontiers in Immunology · 2022</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">A Weighted Genetic Risk Score Using 88 Susceptibility Variants in Newfoundland Psoriasis Patients</div>
+    <div class="pub-authors">Audrey Bui, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Frontiers in Genetics · 2023</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">Pathogenesis of Psoriasis and Psoriatic Arthritis: Biological Insights from Single-Cell Studies</div>
+    <div class="pub-authors">Joy Q. Jin, David Wu, Riley Spencer, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">Expert Opinion on Biological Therapy · 2022 (Review)</div>
+  </div>
+
+  <div class="pub-card first-author">
+    <span class="pub-badge badge-first">⭐ 1st Author</span>
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">Predictive Models for Stage and Risk Classification in Head and Neck Squamous Cell Carcinoma (HNSCC)</div>
+    <div class="pub-authors"><strong>Sugandh Kumar</strong>, Srinivas Patnaik, Anshuman Dixit</div>
+    <div class="pub-journal">PeerJ · 2020</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">Identification of Multipotent Drugs for COVID-19 Therapeutics with Evaluation of SARS-CoV-2 Inhibitory Activity</div>
+    <div class="pub-authors"><strong>Sugandh Kumar</strong>, Bharti Singh, Pratima Kumari, Anshuman Dixit et al.</div>
+    <div class="pub-journal">Computational and Structural Biotechnology Journal · 2021</div>
+  </div>
+
+  <div class="pub-card">
+    <span class="pub-badge badge-published">📄 Published</span>
+    <div class="pub-title">The Association of Hidradenitis Suppurativa with Obstructive Sleep Apnea: A Cross-Sectional Study</div>
+    <div class="pub-authors">E. Kareem, Jared Liu, <strong>Sugandh Kumar</strong> et al., Wilson Liao</div>
+    <div class="pub-journal">JEADV — Journal of the European Academy of Dermatology · 2023</div>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="https://scholar.google.com/citations?user=DIuTOTMAAAAJ&hl=en" class="btn btn-primary" target="_blank" style="background:var(--navy);color:var(--white);">
+      View All 30+ Publications on Google Scholar →
+    </a>
+  </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" style="background:var(--light);">
+  <div class="fade-up">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Awards &amp; <span>Service</span></h2>
+  </div>
+  <div class="awards-grid fade-up">
+    <div class="award-card">
+      <div class="award-icon">🏆</div>
+      <div>
+        <div class="award-title">SID World Leadership Conference in Dermatology &amp; Immunology</div>
+        <div class="award-year">Selected Speaker · 2026</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🎤</div>
+      <div>
+        <div class="award-title">NIH Grant Update Lecture — UCSF Immunology Conference</div>
+        <div class="award-year">Invited Speaker · 2022</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🥇</div>
+      <div>
+        <div class="award-title">Best Poster Award — Genomics India International Conference</div>
+        <div class="award-year">Human Genomics · 2019</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🎓</div>
+      <div>
+        <div class="award-title">Junior &amp; Senior Research Fellowship — University Grants Commission</div>
+        <div class="award-year">Government of India · 2015–2020</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">📝</div>
+      <div>
+        <div class="award-title">Journal Editor — Frontiers in Bioinformatics</div>
+        <div class="award-year">2023 · Guest Editor MDPI Biomolecules 2023</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🔍</div>
+      <div>
+        <div class="award-title">Active Reviewer — 100+ Manuscripts</div>
+        <div class="award-year">Scientific Reports · Cell Reports · JID · JAAD · 13 additional journals</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🔬</div>
+      <div>
+        <div class="award-title">Australian Innovation Patent No. 2021103325</div>
+        <div class="award-year">Method to Detect Paternal Contributors in SEVs · 2021</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🎓</div>
+      <div>
+        <div class="award-title">Merit Scholarship — Central University of South Bihar</div>
+        <div class="award-year">M.Sc. Bioinformatics · 2011–2013</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV DOWNLOAD SECTION -->
+<section id="cv" style="background:var(--navy);text-align:center;padding:60px 8%;">
+  <div class="fade-up">
+    <div class="section-label" style="color:var(--gold);">Resume</div>
+    <h2 class="section-title" style="color:var(--white);">Download My <span style="color:var(--gold);">CV</span></h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 2rem;font-size:0.97rem;">
+      Full curriculum vitae including all publications, experience, skills, awards, and references. Updated June 2026.
+    </p>
+    <a href="SugandhKumar_CV_2026.pdf"
+       download="SugandhKumar_CV_2026.pdf"
+       class="btn btn-primary"
+       style="font-size:1.05rem;padding:14px 36px;background:var(--gold);color:var(--navy);border-radius:10px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;box-shadow:0 4px 20px rgba(233,196,106,0.3);transition:all .2s;"
+       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(233,196,106,0.4)'"
+       onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(233,196,106,0.3)'">
+      📄 Download CV — PDF
+    </a>
+    <div style="margin-top:1.5rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;">
+      <span style="color:rgba(255,255,255,0.45);font-size:0.85rem;">📅 Updated: June 2026</span>
+      <span style="color:rgba(255,255,255,0.45);font-size:0.85rem;">📄 3 pages · PDF</span>
+      <span style="color:rgba(255,255,255,0.45);font-size:0.85rem;">🎓 Ph.D. in Computational Biology</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="fade-up">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact <span style="color:var(--gold);">Me</span></h2>
+    <p style="color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 2rem;">
+      I am open to any position in computational biology and bioinformatics, including faculty positions, and senior scientist opportunities and research collaborations in the Bay Area, CA and beyond.
+    </p>
+  </div>
+  <div class="contact-grid fade-up">
+    <a href="mailto:sugandh.kumar@ucsf.edu" class="contact-item">📧 sugandh.kumar@ucsf.edu</a>
+    <a href="mailto:skjobs0123@gmail.com" class="contact-item">📧 skjobs0123@gmail.com</a>
+    <a href="tel:+16282466846" class="contact-item">📞 +1-628-246-6846</a>
+    <a href="https://www.linkedin.com/in/sugandh-kumar-ph-d-5b7855144/" target="_blank" class="contact-item">💼 LinkedIn</a>
+    <a href="https://github.com/skbioinfo" target="_blank" class="contact-item">⌨️ GitHub</a>
+    <a href="https://scholar.google.com/citations?user=DIuTOTMAAAAJ&hl=en" target="_blank" class="contact-item">📖 Google Scholar</a>
+    <a href="https://orcid.org/0000-0001-7000-4718" target="_blank" class="contact-item">🆔 ORCID</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sugandh Kumar, Ph.D. · Postdoctoral Research Fellow, UCSF · Built for GitHub Pages</p>
+  <p style="margin-top:6px;font-size:0.78rem;">h-index 14 · 550+ citations · 30+ publications · Bay Area, CA</p>
+</footer>
+
+<script>
+// Tab switching
+function showTab(id) {
+  document.querySelectorAll('.skills-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// Scroll fade-in
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
